@@ -1538,7 +1538,7 @@ nav ul li a:hover:after, nav ul li a.active:after {
     overflow: hidden;
     position: relative;
     width: 100%;
-    padding: 10px 0;
+    padding: 10px 10px;
     margin-top: 20px;
     max-width: 1700px;
     margin-left: auto;
@@ -1646,15 +1646,18 @@ nav ul li a:hover:after, nav ul li a.active:after {
 
 .team-social {
     position: absolute;
-    bottom: -50px;
+    bottom: -100%;
     left: 0;
     width: 100%;
     display: flex;
     justify-content: center;
+    align-items: center;
     gap: 8px;
-    padding: 8px 0;
+    padding: 8px 5px;
     background: rgba(255, 255, 255, 0.9);
     transition: var(--transition);
+    text-align: center;
+    flex-wrap: wrap;
 }
 
 .team-member:hover .team-social {

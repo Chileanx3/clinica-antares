@@ -834,8 +834,25 @@ document.addEventListener('DOMContentLoaded', function() {
             member.classList.remove('hidden');
             member.style.display = '';
         });
+        currentPosition = 0;
         updateCarouselPosition(true); // Set initial position without animation
-        startAutoScroll();
+
+        // Auto-scroll only when the section is visible in viewport
+        const equipoSection = document.getElementById('equipo');
+        if (equipoSection && 'IntersectionObserver' in window) {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        startAutoScroll();
+                    } else {
+                        stopAutoScroll();
+                    }
+                });
+            }, { threshold: 0.3 });
+            observer.observe(equipoSection);
+        } else {
+            startAutoScroll();
+        }
 
         // Event Listeners
         if (prevArrow) {
